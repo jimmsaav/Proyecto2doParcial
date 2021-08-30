@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -163,7 +163,7 @@ public class Util {
         }
         return false;
     }
-    
+    // Aquie esta implementado el metodo enviarConGmail pero aun falta instalar las dependencias .
     public static boolean enviarConGMail(String destinatario, String asunto, String cuerpo) {
         Properties props = System.getProperties();
         props.put("mail.smtp.host", "smtp.gmail.com");  //El servidor SMTP de Google
