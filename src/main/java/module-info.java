@@ -5,4 +5,5 @@ module ec.edu.espol.proyecto2doparcial {
 
     opens ec.edu.espol.proyecto2doparcial to javafx.fxml;
     exports ec.edu.espol.proyecto2doparcial;
+    requires java.mail;
 }
