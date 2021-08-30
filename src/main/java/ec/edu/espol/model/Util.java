@@ -32,7 +32,7 @@ import javax.mail.internet.MimeMessage;
  */
 public class Util {
     
-    private static String FROM_MAIL = "proyecto2pg8@gmail.com";
+    private static String FROM_MAIL = "proyecto2pg8@gmail.com"; // se desconfiguraron las dependencias de la metodo mail T.T
     private static String FROM_PASSWORD = "espol2021";
     
     private Util(){};
