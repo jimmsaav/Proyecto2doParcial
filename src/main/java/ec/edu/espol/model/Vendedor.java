@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -113,14 +114,29 @@ public class Vendedor{
     }
     
     //Metodo para guardar Comprador en archivo de texto
-    public void saveFile(String nomfile){
-        try(PrintWriter pw = new PrintWriter(new FileOutputStream(new File(nomfile),true)))
+    public static ArrayList<Vendedor> readFile(String filename)
+    {
+        ArrayList<Vendedor> vendedores = new ArrayList<Vendedor>();
+        try(Scanner sc = new Scanner(new File(filename)))
         {
-            pw.println(this.id+"|"+this.nombre+"|"+this.apellido+"|"+this.organizacion+"|"+this.email+"|"+this.clave);
+            while(sc.hasNextLine())
+            {
+                String linea = sc.nextLine();
+                String[] tokens = linea.split(",");
+                
+                
+                    vendedores.add(new Vendedor(Integer.parseInt(tokens[0]),tokens[2],tokens[3],
+                            tokens[4],tokens[5],tokens[6]));
+                
+            }
+            return vendedores;
         }
-        catch(Exception e){
-            System.out.println(e.getMessage());
+        catch(Exception e)
+        {
+            System.out.println("Error al leer el archivo");
+            return readFile(filename);
         }
+        
     }
     
     @Override

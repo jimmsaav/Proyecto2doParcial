@@ -13,6 +13,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -112,6 +113,31 @@ public class Comprador {
     }
     
     //Metodo para guardar Comprador en archivo de texto
+    public static ArrayList<Comprador> readFile(String filename)
+    {
+        ArrayList<Comprador> compradores = new ArrayList<Comprador>();
+        try(Scanner sc = new Scanner(new File(filename)))
+        {
+            while(sc.hasNextLine())
+            {
+                String linea = sc.nextLine();
+                String[] tokens = linea.split(",");
+                
+                
+                    compradores.add(new Comprador(Integer.parseInt(tokens[0]),tokens[2],tokens[3],
+                            tokens[4],tokens[5],tokens[6]));
+                
+            }
+            return compradores;
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error al leer el archivo");
+            return readFile(filename);
+        }
+        
+    }
+    
     public void saveFile(String nomfile){
         try(PrintWriter pw = new PrintWriter(new FileOutputStream(new File(nomfile),true)))
         {

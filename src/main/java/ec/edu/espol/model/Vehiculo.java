@@ -400,4 +400,80 @@ public class Vehiculo {
         }
     }
     */
+    
+    public void removeFromOfertaFile(String filename)
+    {
+        ArrayList<String> lineasArchivo = new ArrayList<>();
+        try(Scanner sc = new Scanner(new File(filename)))
+        {
+            while(sc.hasNextLine())
+            {
+                String linea = sc.nextLine();
+                String[] tokens = linea.toString().split(",");
+                
+                if(Integer.parseInt(tokens[2]) != this.id)
+                {
+                    lineasArchivo.add(linea);
+                }
+            }
+        }
+        catch(Exception e){}
+        restartFile(filename);
+        for (String linea : lineasArchivo)
+        {
+            try(PrintWriter pw = new PrintWriter(new FileOutputStream(new File(filename),true)))
+            {
+                pw.println(linea);
+            }
+            catch (Exception e)
+            {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+    public void removeFromVehicleFile(String filename)
+    {
+        ArrayList<String> lineasArchivo = new ArrayList<>();
+        int conteo = 0;
+        try(Scanner sc = new Scanner(new File(filename)))
+        {
+            
+            while(sc.hasNextLine())
+            {
+
+                String linea = sc.nextLine();
+                String[] tokens = linea.toString().split(",");
+                if(Integer.parseInt(tokens[0]) != this.id)
+                {
+                    
+                    lineasArchivo.add(linea);
+                }
+            }
+        }
+        catch(Exception e){}
+        restartFile(filename);
+        for (String linea : lineasArchivo)
+        {
+            try(PrintWriter pw = new PrintWriter(new FileOutputStream(new File(filename),true)))
+            {
+                pw.println(linea);
+            }
+            catch (Exception e)
+            {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+    
+    public static void restartFile(String filename)
+    {
+        try(PrintWriter pw = new PrintWriter(new FileOutputStream(new File(filename), false)))
+        {
+                
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
 }
