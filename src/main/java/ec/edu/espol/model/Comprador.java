@@ -112,7 +112,7 @@ public class Comprador {
         return comprador;
     }
     
-    //Metodo para guardar Comprador en archivo de texto
+  
     public static ArrayList<Comprador> readFile(String filename)
     {
         ArrayList<Comprador> compradores = new ArrayList<Comprador>();

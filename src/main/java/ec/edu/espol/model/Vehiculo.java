@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- *
+
  * @author jimmy
  */
 public class Vehiculo {
@@ -36,6 +36,7 @@ public class Vehiculo {
     private String transmision; //no aplica para motos
     private String traccion; //aplica para camionetas
     private double precio;
+    private ArrayList<Oferta> ofertas;
     
     //METODO CONSTRUCTOR PARA AUTOS
     public Vehiculo(int id, String placa, String tipo, String marca, String modelo, String tipo_de_motor, int año, double recorrido, String color, String tipo_combustible, String vidrios, String transmision, double precio) {
@@ -198,6 +199,9 @@ public class Vehiculo {
 
     public void setPrecio(double precio) {
         this.precio = precio;
+    }
+    public ArrayList<Oferta> getOfertas() {
+        return ofertas;
     }
     
     //(String nombre, String apellido, String email, String organizacion, String clave)
@@ -476,4 +480,6 @@ public class Vehiculo {
             System.out.println(e.getMessage());
         }
     }
+
+
 }
