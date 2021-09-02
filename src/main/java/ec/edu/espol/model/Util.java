@@ -42,7 +42,7 @@ public class Util {
         try(Scanner sc = new Scanner(new File(nomfile))){
             while(sc.hasNextLine()){
                 String linea = sc.nextLine();
-                String[] tokens = linea.split("\\|");
+                String[] tokens = linea.split(",");
                 id = Integer.parseInt(tokens[0]);
             }
         }catch(Exception e){
@@ -55,7 +55,7 @@ public class Util {
         try(Scanner sc = new Scanner (new File(nomfile))){
             while (sc.hasNextLine()){
                 String linea = sc.nextLine();
-                String[] tokens = linea.split("\\|");
+                String[] tokens = linea.split(",");
                 if(v.getEmail().equals(tokens[3])){
                     return false;
                 }
@@ -74,7 +74,7 @@ public class Util {
         try(Scanner sc = new Scanner (new File(nomfile))){
             while (sc.hasNextLine()){
                 String linea = sc.nextLine();
-                String[] tokens = linea.split("\\|");
+                String[] tokens = linea.split(",");
                 correoCompradores.add(tokens[2]);
             }
         }
@@ -118,7 +118,7 @@ public class Util {
         try(Scanner sc = new Scanner (new File(nomfile))){
             while (sc.hasNextLine()){
                 String linea = sc.nextLine();
-                String[] tokens = linea.split("\\|");
+                String[] tokens = linea.split(",");
                 if (correoIngresado.equals(tokens[4]) && hash.equals(tokens[5]))
                     return false;
             }
