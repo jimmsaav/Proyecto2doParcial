@@ -395,15 +395,7 @@ public class Vehiculo {
         }
         return vehiculos;
     }
-    /*
-    public static Vehiculo searchByParametros(ArrayList<Vehiculo> vehiculos,ArrayList<Oferta> ofertas){
-        for(Vehiculo v : vehiculos){
-            for(Oferta o: ofertas){
-                if(v.tipo.equals(o.getTipo())) // aqui falta agregar la busquedad por parametros 
-            }
-        }
-    }
-    */
+    
     
     public void removeFromOfertaFile(String filename)
     {
