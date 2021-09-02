@@ -125,8 +125,8 @@ public class Vendedor{
                 String[] tokens = linea.split(",");
                 
                 
-                    vendedores.add(new Vendedor(Integer.parseInt(tokens[0]),tokens[2],tokens[3],
-                            tokens[4],tokens[5],tokens[6]));
+                    vendedores.add(new Vendedor(Integer.parseInt(tokens[0]),tokens[1],tokens[2],
+                            tokens[3],tokens[4],tokens[5]));
                 
             }
             return vendedores;
@@ -137,6 +137,16 @@ public class Vendedor{
             return readFile(filename);
         }
         
+    }
+    
+    public void saveFile(String nomfile){
+        try(PrintWriter pw = new PrintWriter(new FileOutputStream(new File(nomfile),true)))
+        {
+            pw.println(this.id+","+this.nombre+","+this.apellido+","+this.organizacion+","+this.email+","+this.clave);
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }
     }
     
     @Override
