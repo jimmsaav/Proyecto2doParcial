@@ -20,7 +20,8 @@ import java.util.Scanner;
  *
  * @author jimmy
  */
-public class Comprador {
+public class Comprador 
+{
     private int id;
     private String nombre;
     private String apellido;
@@ -86,58 +87,12 @@ public class Comprador {
     }
     
     //(String nombre, String apellido, String email, String organizacion, String clave)
-    public static Comprador leerTeclado(Scanner sc, String nomfile) throws NoSuchAlgorithmException{
-        
-        System.out.println("Ingrese nombre del Comprador: ");
-        sc.useDelimiter("\n");
-        String nombre = sc.next();
-        System.out.println("Ingrese apellido del Comprador: ");
-        sc.useDelimiter("\n");
-        String apellido = sc.next();
-        System.out.println("Ingrese correo del Comprador: ");
-        sc.useDelimiter("\n");    
-        String email = sc.next();
-        System.out.println("Ingrese organizacion del Comprador: ");
-        sc.useDelimiter("\n");
-        String organizacion = sc.next();
-        System.out.println("Ingrese contraseña del Comprador: ");
-        sc.useDelimiter("\n");
-        String contraseña = sc.next();
-        //Convertimos la contraseña
-        String hash = Util.convertirContraseña(contraseña);
-        //Creamos el Objeto Comprador
-        int id = Util.nextID(nomfile);
-        Comprador comprador = new Comprador(id, nombre, apellido, email, organizacion, hash);
-        
-        return comprador;
-    }
-    
-  
-    public static ArrayList<Comprador> readFile(String filename)
+    public static Comprador leerTeclado(Scanner sc, String nomfile) throws NoSuchAlgorithmException
     {
-        ArrayList<Comprador> compradores = new ArrayList<Comprador>();
-        try(Scanner sc = new Scanner(new File(filename)))
-        {
-            while(sc.hasNextLine())
-            {
-                String linea = sc.nextLine();
-                String[] tokens = linea.split(",");
-                
-                
-                    compradores.add(new Comprador(Integer.parseInt(tokens[0]),tokens[2],tokens[3],
-                            tokens[4],tokens[5],tokens[6]));
-                
-            }
-            return compradores;
-        }
-        catch(Exception e)
-        {
-            System.out.println("Error al leer el archivo");
-            return readFile(filename);
-        }
-        
+        return null;
     }
     
+    //Metodo para guardar Comprador en archivo de texto
     public void saveFile(String nomfile){
         try(PrintWriter pw = new PrintWriter(new FileOutputStream(new File(nomfile),true)))
         {

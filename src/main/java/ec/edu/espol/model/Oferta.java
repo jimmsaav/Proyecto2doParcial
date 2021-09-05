@@ -6,8 +6,12 @@
 package ec.edu.espol.model;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -15,157 +19,122 @@ import java.util.Scanner;
  *
  * @author jimmy
  */
-public class Oferta {
-    private int id; //Falta getter y setter
-    private int idComprador; //Falta getter y setter
-    private int idVehiculo; // Falta getter y setter
-    private double precio_ofertado;
+public class Oferta implements Serializable, Comparable<Oferta>
+{
+    protected String correo;
+    protected double precio;
+    private String placa;
     
-    private Vehiculo veh;
-    private Comprador comprador;
-    private Vendedor vendedor;
-    
-    public Oferta (int id, int idComprador,int idVehiculo, double precio_ofertado)
+    public Oferta(String correo, double precio, String placa)
     {
-        this.idComprador = idComprador;
-        this.idVehiculo = idVehiculo;
-       
-        this.precio_ofertado = precio_ofertado;
+        this.correo=  correo;
+        this.precio= precio;
+        this.placa= placa;
     }
-    
-    public int getId()
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public String getPlaca() {
+        return placa;
+    }
+
+    public void setPlaca(String placa) {
+        this.placa = placa;
+    }
+  
+    public void saveFile() throws IOException 
     {
-        return this.id;
+        String filename = "ofertas.ser";
+        ArrayList<Oferta> ofertas = Util.readOfertasFile();
+        
+        try(ObjectOutputStream outStream = new ObjectOutputStream(new FileOutputStream(filename)))
+        {
+            ofertas.add(this);    
+            outStream.writeObject(ofertas);
+            outStream.close();
+        }
+        catch(FileNotFoundException fnfe)
+        {
+            File f = new File(filename);
+            f.createNewFile();
+            System.out.println("Se ha creado un nuevo archivo");
+        }
+        catch(IOException ioe)
+        {
+            //ioe.printStackTrace();
+        }
+        
     }
-    public int getIdComprador()
+   
+    public static void removerOferta(Oferta oferta) throws IOException 
     {
-        return this.idComprador;
-    }
-    public int getIdVehiculo()
-    {
-        return this.idVehiculo;
-    }
-    
-    public void setVehiculo(Vehiculo v)
-    {
-        this.veh = v;
-    }
+        String filename = "ofertas.ser";
+        ArrayList<Oferta> ofertas = Util.readOfertasFile();
+        
+        ArrayList<Oferta> ofertasMod = new ArrayList<>();
+        
+        for(Oferta o : ofertas)
+        {
+            if(o.getCorreo().equals(oferta.getCorreo()) && o.getPlaca().equals(oferta.getPlaca()))
+            {
+               
+            }
+            else
+            {
+                ofertasMod.add(o);
+            }
+        }
 
-    public Comprador getComprador() {
-        return comprador;
+        
+        
+        try(ObjectOutputStream outStream = new ObjectOutputStream(new FileOutputStream(filename)))
+        {    
+            outStream.writeObject(ofertasMod);
+            outStream.close();
+        }
+        catch(FileNotFoundException fnfe)
+        {
+            File f = new File(filename);
+            f.createNewFile();
+            System.out.println("Se ha creado el archivo");
+            //fnfe.printStackTrace();
+        }
+        catch(IOException ioe)
+        {
+            //ioe.printStackTrace();
+        }
     }
-
-    public void setComprador(Comprador comprador) {
-        this.comprador = comprador;
-    }
-
-    public Vendedor getVendedor() {
-        return vendedor;
-    }
-
-    public void setVendedor(Vendedor vendedor) {
-        this.vendedor = vendedor;
-    }
-    
-    
-    public Vehiculo getVehiculo()
-    {
-        return this.veh;
-    }
-
-
-    public double getPrecio_ofertado() {
-        return precio_ofertado;
-    }
-
-    public void setPrecio_ofertado(double precio_ofertado) {
-        this.precio_ofertado = precio_ofertado;
-    }
-    
     
     
     
     @Override
-    public String toString(){
-       return String.format("Oferta: $%.2f", this.precio_ofertado); 
-    }
-    
-    public static ArrayList<Vehiculo> linkVehiculos(ArrayList<Oferta> ofertas, ArrayList<Comprador> compradores, ArrayList<Vendedor> vendedores, ArrayList<Vehiculo> vehiculos)
+    public String toString()
     {
-        ArrayList<Vehiculo> vehiculoListos = new ArrayList<>();
-        for (Oferta off : ofertas)
-        {
-            for(Comprador comp : compradores)
-            {
-                if(comp.getId() == off.getIdComprador())
-                {
-                    off.setComprador(comp);
-                    
-                }
-                
-            }
-            for(Vendedor vend : vendedores)
-            {
-                if(vend.getId() == off.getIdComprador())
-                {
-                    off.setVendedor(vend);
-                    
-                }
-                
-            }
-            
-            for (Vehiculo v : vehiculos)
-            {
-                if(off.getIdVehiculo() == v.getId())
-                {
-                    off.setVehiculo(v);
-                    v.getOfertas().add(off);
-                    
-                    if(!vehiculoListos.contains(v))
-                        vehiculoListos.add(v);
-                    
-                }
-            }
-        }
-        return vehiculoListos;
+        String res = String.format("Placa: %s%nCorreo: %s%nPrecio Ofertado: %.2f", this.getPlaca(),
+                this.getCorreo(), this.getPrecio());
+        return res;
     }
-    
-    
-    
-    
-    public static ArrayList<Oferta> readFile(String filename)
-    {
-        ArrayList<Oferta> ofertas = new ArrayList<>();
-        try(Scanner sc = new Scanner(new File(filename)))
-        {
-            while(sc.hasNextLine())
-            {
-                String linea = sc.nextLine();
-                String[] tokens = linea.split(",");
-                Oferta o = new Oferta(Integer.parseInt(tokens[0]),Integer.parseInt(tokens[1]),
-                        Integer.parseInt(tokens[2]), Double.parseDouble(tokens[3]));
-                ofertas.add(o);
-            }    
-            return ofertas;
 
-        }
-        catch(Exception e)
-        {
-            System.out.println("Error al leer el archivo");
-            return null;
-        }
-        
-    }
-    public void saveFile(String filename)
+    @Override
+    public int compareTo(Oferta arg0) 
     {
-        try(PrintWriter pw = new PrintWriter(new FileOutputStream(new File(filename), true)))
-        {
-            pw.println(this.id + "," + this.idComprador + "," + this.idVehiculo + "," + this.precio_ofertado);
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-        }
-            
+        Double p1= this.precio;
+        Double p2= arg0.getPrecio();
+       return p2.compareTo(p1);
     }
+    
 }
