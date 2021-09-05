@@ -79,7 +79,7 @@ public class Util
         Thread t = new Thread(()->{
         String to = correoObjetivo;
         String from = "proyecto2pg8";//correoEmisor
-        String clave = "espol2021"; //PONER AQUI LA CLAVE DEL CORREO EMISOR
+        String clave = "espol2021"; // chicos si el profesor les hace correr el programa no se olviden de abrir el correo en sus pc by Jimmy 
         
         
         Properties props = System.getProperties();
