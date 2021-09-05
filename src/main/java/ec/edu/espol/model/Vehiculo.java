@@ -10,6 +10,7 @@ package ec.edu.espol.model;
  * @author jimmy
  */
 
+import ec.edu.espol.util.Util;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -151,7 +152,8 @@ public class Vehiculo implements Serializable
             //ioe.printStackTrace();
         }
     }
-  
+    
+    
     public static void removerVehiculo(String filenamex, Vehiculo v) throws IOException
     {
         String filename = filenamex;

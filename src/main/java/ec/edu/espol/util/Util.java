@@ -3,17 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ec.edu.espol.model;
+package ec.edu.espol.util;
 
 /**
  *
  * @author jimmy
  */
+
+import ec.edu.espol.model.Oferta;
+import ec.edu.espol.model.User;
 import ec.edu.espol.model.Vehiculo;
 import ec.edu.espol.model.Vendedor;
-import ec.edu.espol.model.User;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.math.BigInteger;
@@ -24,7 +27,8 @@ import java.util.ArrayList;
 import java.util.Properties;
 import java.util.Scanner;
 import javafx.scene.control.Alert;
- import javax.mail.Message;
+import javafx.scene.control.Alert.AlertType;
+import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.Transport;
@@ -35,6 +39,7 @@ import javax.mail.internet.MimeMessage;
  *
  * @author jimmy
  */
+
 public class Util 
 {
     public static boolean isValidCred(String correo, String contrasenia) 

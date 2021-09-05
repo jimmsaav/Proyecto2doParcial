@@ -4,6 +4,8 @@ module ec.edu.espol.proyecto2doparcial {
     requires java.base;
 
     opens ec.edu.espol.proyecto2doparcial to javafx.fxml;
+    opens ec.edu.espol.controller to javafx.fxml;
     exports ec.edu.espol.proyecto2doparcial;
+    exports ec.edu.espol.controller;
     requires java.mail;
 }
