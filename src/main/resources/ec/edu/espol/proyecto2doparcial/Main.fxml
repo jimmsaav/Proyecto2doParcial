@@ -2,62 +2,25 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="ec.edu.espol.controller.MainController">
    <children>
-      <HBox layoutX="1.0" prefHeight="400.0" prefWidth="600.0">
+      <VBox fx:id="panelvend" alignment="CENTER" layoutX="66.0" layoutY="100.0" prefHeight="200.0" prefWidth="185.0" spacing="20.0">
          <children>
-            <VBox prefHeight="400.0" prefWidth="197.0">
-               <children>
-                  <AnchorPane fx:id="panelvend" prefHeight="107.0" prefWidth="197.0">
-                     <children>
-                        <Button layoutX="63.0" layoutY="67.0" mnemonicParsing="false" text="Registrar Vendedor" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane prefHeight="117.0" prefWidth="197.0">
-                     <children>
-                        <Button layoutX="55.0" layoutY="59.0" mnemonicParsing="false" text="Registrar Comprador" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane prefHeight="122.0" prefWidth="197.0">
-                     <children>
-                        <Button layoutX="56.0" layoutY="48.0" mnemonicParsing="false" text="Ofertas Vigentes" />
-                     </children>
-                  </AnchorPane>
-               </children>
-            </VBox>
-            <VBox prefHeight="400.0" prefWidth="220.0">
-               <children>
-                  <AnchorPane prefHeight="130.0" prefWidth="220.0">
-                     <children>
-                        <Button layoutX="84.0" layoutY="65.0" mnemonicParsing="false" text="Perfil" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane prefHeight="136.0" prefWidth="220.0">
-                     <children>
-                        <Button layoutX="79.0" layoutY="42.0" mnemonicParsing="false" text="Regresar" />
-                     </children>
-                  </AnchorPane>
-               </children>
-            </VBox>
-            <VBox prefHeight="400.0" prefWidth="184.0">
-               <children>
-                  <AnchorPane fx:id="panelcomp" prefHeight="126.0" prefWidth="184.0">
-                     <children>
-                        <Button layoutY="63.0" mnemonicParsing="false" text="Registrar Comprador" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane prefHeight="131.0" prefWidth="184.0">
-                     <children>
-                        <Button layoutY="53.0" mnemonicParsing="false" text="Realizar Oferta" />
-                     </children>
-                  </AnchorPane>
-               </children>
-            </VBox>
+            <Button mnemonicParsing="false" onMouseClicked="#registroven" text="Registrar vendedor" />
+            <Button mnemonicParsing="false" onMouseClicked="#registroveh" text="Registrar vehiculo" />
+            <Button mnemonicParsing="false" onMouseClicked="#aceptaofer" text="Aceptar Ofertas" />
          </children>
-      </HBox>
+      </VBox>
+      <VBox fx:id="panelcomp" alignment="CENTER" layoutX="366.0" layoutY="100.0" prefHeight="200.0" prefWidth="185.0" spacing="20.0">
+         <children>
+            <Button mnemonicParsing="false" onMouseClicked="#registrocomp" text="Registrar comprador" />
+            <Button mnemonicParsing="false" onMouseClicked="#hacerofer" text="Hacer Oferta" />
+         </children>
+      </VBox>
+      <Button layoutX="279.0" layoutY="152.0" mnemonicParsing="false" onMouseClicked="#abrirperfil" text="Perfil" />
+      <Button layoutX="269.0" layoutY="220.0" mnemonicParsing="false" onMouseClicked="#volverLogin" text="Regresar" />
    </children>
 </AnchorPane>

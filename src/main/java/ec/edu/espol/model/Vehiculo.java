@@ -69,6 +69,22 @@ public class Vehiculo implements Serializable
     public String getModelo() {
         return modelo;
     }
+    public static boolean placaExiste(String placa, String filenamex)
+    {
+         String filename = filenamex;
+     
+        ArrayList<Vehiculo> lista = Util.readVehiclesFile(filename);
+     
+     for (Vehiculo p : lista)
+     {
+         if(p.getPlaca().equals(placa))
+         {
+             return true;
+         }
+     }
+     
+     return false;
+ }
 
     public void setModelo(String modelo) {
         this.modelo = modelo;

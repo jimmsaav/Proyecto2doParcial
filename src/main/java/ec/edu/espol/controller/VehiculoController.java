@@ -9,6 +9,7 @@ import ec.edu.espol.model.Auto;
 import ec.edu.espol.model.Camioneta;
 import ec.edu.espol.model.Moto;
 import ec.edu.espol.model.User;
+import ec.edu.espol.model.Vehiculo;
 import ec.edu.espol.proyecto2doparcial.App;
 import ec.edu.espol.util.Util;
 import java.io.File;
@@ -117,12 +118,27 @@ public class VehiculoController implements Initializable
     @FXML
     private void registrarveh(MouseEvent event)
     {
-        if(!marcatf.getText().isEmpty() && !modelotf.getText().isEmpty() &&
+        if(Vehiculo.placaExiste(placatf.getText(),"autos.ser"))
+        {
+            Util.alerta("Error","Placa ya existe");
+            
+        }        
+        else if(Vehiculo.placaExiste(placatf.getText(),"camionetas.ser"))
+        {
+            Util.alerta("Error","Placa ya existe");
+            
+        }
+        else if(Vehiculo.placaExiste(placatf.getText(),"motos.ser"))
+        {
+            Util.alerta("Error","Placa ya existe");
+            
+        }
+        else if(!marcatf.getText().isEmpty() && !modelotf.getText().isEmpty() &&
                    !motortf.getText().isEmpty() && !añotf.getText().isEmpty() &&
                    !recorridotf.getText().isEmpty()&&!combustibletf.getText().isEmpty()&&
                    !colortf.getText().isEmpty() && !preciotf.getText().isEmpty() && !vidriostf.getText().isEmpty()&&
                    !transmisiontf.getText().isEmpty()  && !placatf.getText().isEmpty() && 
-                    !pathtf.getText().equals("") && vehactual.equals("auto"))
+                    !pathtf.getText().equals("") && vehactual.equals("auto") && !Vehiculo.placaExiste(placatf.getText(),"autos.ser"))
                 {
                     try
                     {
@@ -154,7 +170,8 @@ public class VehiculoController implements Initializable
                    !recorridotf.getText().isEmpty()&&!combustibletf.getText().isEmpty()&&
                    !colortf.getText().isEmpty() && !preciotf.getText().isEmpty() && !vidriostf.getText().isEmpty()&&
                    !transmisiontf.getText().isEmpty()  && !placatf.getText().isEmpty() && 
-                    !pathtf.getText().equals("") && !tracciontf.getText().isEmpty() && vehactual.equals("camioneta"))
+                    !pathtf.getText().equals("") && !tracciontf.getText().isEmpty() 
+                && vehactual.equals("camioneta")&&!Vehiculo.placaExiste(placatf.getText(),"camionetas.ser"))
                 {
                     try
                     {
@@ -186,7 +203,7 @@ public class VehiculoController implements Initializable
                    !motortf.getText().isEmpty() && !añotf.getText().isEmpty() &&
                    !recorridotf.getText().isEmpty()&&!combustibletf.getText().isEmpty()&&
                    !colortf.getText().isEmpty() && !preciotf.getText().isEmpty()  && !placatf.getText().isEmpty() && 
-                    !pathtf.getText().equals("") && vehactual.equals("moto"))
+                    !pathtf.getText().equals("") && vehactual.equals("moto")&&!Vehiculo.placaExiste(placatf.getText(),"motos.ser"))
                 {
                     try
                     {

@@ -145,6 +145,16 @@ public class Util
         {
             listaVehs = (ArrayList<Vehiculo>) inStream.readObject();
         }
+        catch(FileNotFoundException fn)
+        {
+            File f = new File(filenamex);
+            try {
+                f.createNewFile();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            System.out.println("Archivo creado");
+        }
         catch(IOException e)
         {
             e.printStackTrace();
