@@ -3,16 +3,16 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ec.edu.espol.controller.LoginController">
-   <center>
-      <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="194.0" prefWidth="342.0" BorderPane.alignment="CENTER">
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="ec.edu.espol.controller.LoginController">
+   <children>
+      <GridPane layoutX="124.0" layoutY="124.0" prefHeight="90.0" prefWidth="360.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -23,16 +23,13 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña" GridPane.rowIndex="1" />
-            <TextField fx:id="correotf" promptText="user name" GridPane.columnIndex="1" />
-            <Button fx:id="Login" mnemonicParsing="false" onMouseClicked="#Login" text="Iniciar Sesion" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button fx:id="Registro" mnemonicParsing="false" onMouseClicked="#Registro" text="Registrarse" GridPane.rowIndex="2" />
-            <PasswordField fx:id="clavetf" promptText="password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Correo:" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Clave:" GridPane.rowIndex="1" />
+            <Button mnemonicParsing="false" onMouseClicked="#entrar" text="Entrar" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <Button mnemonicParsing="false" onMouseClicked="#registrarse" text="Registrarse" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
+            <TextField fx:id="correotf" GridPane.columnIndex="1" />
+            <PasswordField fx:id="clavetf" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-   </center>
-   <top>
-      <ImageView fitHeight="150.0" fitWidth="418.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
-   </top>
-</BorderPane>
+   </children>
+</AnchorPane>
