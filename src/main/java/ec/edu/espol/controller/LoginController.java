@@ -6,6 +6,7 @@
 package ec.edu.espol.controller;
 
 import ec.edu.espol.model.User;
+import ec.edu.espol.proyecto2doparcial.App;
 import ec.edu.espol.util.Util;
 import static ec.edu.espol.util.Util.readPersonasFile;
 import java.io.File;
@@ -28,44 +29,50 @@ import javafx.scene.input.MouseEvent;
  *
  * @author jimmy
  */
-public class LoginController implements Initializable {
+public class LoginController implements Initializable 
+{
 
+    ArrayList<User> globalUsers;
+    
+    
     @FXML
-    private Button Registro;
+    private TextField correotf;
     @FXML
-    private TextField UserName;
+    private PasswordField clavetf;
     @FXML
     private Button Login;
     @FXML
-    private PasswordField Password;
+    private Button Registro;
 
     /**
      * Initializes the controller class.
      */
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    public void initialize(URL url, ResourceBundle rb) 
+    {
         String usersfile = "users.ser";
         
-        ArrayList<User> globalUsers = Util.readPersonasFile();
-       
+        globalUsers = Util.readPersonasFile();
+        
     }    
 
     @FXML
-    private void Login(MouseEvent event) {
-        if(Util.isValidCred(UserName.getText(), Password.getText()))
+    private void Login(MouseEvent event) 
+    {
+        
+        if(Util.isValidCred(correotf.getText(), clavetf.getText()))
         {
             User us = null;
             for (User u: globalUsers)
             {
-                if(u.getCorreo().equals(UserName.getText()))
+                if(u.getCorreo().equals(correotf.getText()))
                 {
                     us = u;
                 }
             }
             try 
             {
-                FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("main"));
+                FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Main.fxml"));
                 Parent root = fxmlLoader.load();
                 App.setParentRoot(root);
                 MainController mc = fxmlLoader.<MainController>getController();
@@ -77,10 +84,18 @@ public class LoginController implements Initializable {
             }
         }
     }
-    }
 
     @FXML
-    private void Registro(MouseEvent event) {
+    private void Registro(MouseEvent event) 
+    {
+        try 
+        {        
+            App.setRoot("Registro");
+        } 
+        catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
+
     
 }

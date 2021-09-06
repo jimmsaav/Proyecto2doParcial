@@ -25,10 +25,10 @@
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Contraseña" GridPane.rowIndex="1" />
-            <TextField fx:id="UserName" promptText="user name" GridPane.columnIndex="1" />
+            <TextField fx:id="correotf" promptText="user name" GridPane.columnIndex="1" />
             <Button fx:id="Login" mnemonicParsing="false" onMouseClicked="#Login" text="Iniciar Sesion" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Button fx:id="Registro" mnemonicParsing="false" onMouseClicked="#Registro" text="Registrarse" GridPane.rowIndex="2" />
-            <PasswordField fx:id="Password" promptText="password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <PasswordField fx:id="clavetf" promptText="password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
    </center>
