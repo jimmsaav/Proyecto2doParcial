@@ -19,7 +19,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -39,10 +38,6 @@ public class LoginController implements Initializable
     private TextField correotf;
     @FXML
     private PasswordField clavetf;
-    @FXML
-    private Button Login;
-    @FXML
-    private Button Registro;
 
     /**
      * Initializes the controller class.
@@ -57,7 +52,7 @@ public class LoginController implements Initializable
     }    
 
     @FXML
-    private void Login(MouseEvent event) 
+    private void entrar(MouseEvent event) 
     {
         
         if(Util.isValidCred(correotf.getText(), clavetf.getText()))
@@ -86,7 +81,7 @@ public class LoginController implements Initializable
     }
 
     @FXML
-    private void Registro(MouseEvent event) 
+    private void registrarse(MouseEvent event) 
     {
         try 
         {        
@@ -96,6 +91,5 @@ public class LoginController implements Initializable
             ex.printStackTrace();
         }
     }
-
     
 }
