@@ -8,4 +8,5 @@ module ec.edu.espol.proyecto2doparcial {
     exports ec.edu.espol.proyecto2doparcial;
     exports ec.edu.espol.controller;
     requires java.mail;
+    requires activation;
 }
