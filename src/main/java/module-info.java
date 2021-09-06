@@ -1,12 +1,10 @@
 module ec.edu.espol.proyecto2doparcial {
     requires javafx.controls;
     requires javafx.fxml;
-    requires java.base;
 
     opens ec.edu.espol.proyecto2doparcial to javafx.fxml;
-    opens ec.edu.espol.controller to javafx.fxml;
-    exports ec.edu.espol.proyecto2doparcial;
-    exports ec.edu.espol.controller;
+    exports ec.edu.espol.proyecto2doparcial;    
     requires java.mail;
     requires activation;
+    requires java.base;
 }

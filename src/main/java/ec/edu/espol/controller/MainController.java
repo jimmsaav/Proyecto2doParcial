@@ -6,6 +6,7 @@
 package ec.edu.espol.controller;
 
 import ec.edu.espol.model.User;
+import ec.edu.espol.proyecto2doparcial.App;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
